@@ -1,39 +1,44 @@
-URL: /
-Timestamp: Thu Mar 14 2024 16:28:44 GMT-0700 (Pacific Daylight Time)
-
-URL: /img/logo.jpg
-Timestamp: Thu Mar 14 2024 16:28:44 GMT-0700 (Pacific Daylight Time)
-
-URL: /img/pier.jpg
-Timestamp: Thu Mar 14 2024 16:28:44 GMT-0700 (Pacific Daylight Time)
-
-URL: /favicon.ico
-Timestamp: Thu Mar 14 2024 16:28:44 GMT-0700 (Pacific Daylight Time)
-
-URL: /documentation
-Timestamp: Thu Mar 14 2024 16:28:54 GMT-0700 (Pacific Daylight Time)
-
-URL: /fdfdg
-Timestamp: Thu Mar 14 2024 16:29:00 GMT-0700 (Pacific Daylight Time)
-
-URL: /img/logo.jpg
-Timestamp: Thu Mar 14 2024 16:29:00 GMT-0700 (Pacific Daylight Time)
-
-URL: /img/pier.jpg
-Timestamp: Thu Mar 14 2024 16:29:00 GMT-0700 (Pacific Daylight Time)
-
-URL: /fdfdg
-Timestamp: Thu Mar 14 2024 16:30:43 GMT-0700 (Pacific Daylight Time)
-
-URL: /dcoumentation
-Timestamp: Thu Mar 14 2024 16:31:22 GMT-0700 (Pacific Daylight Time)
-
-URL: /documentation
-Timestamp: Thu Mar 14 2024 16:31:31 GMT-0700 (Pacific Daylight Time)
-
-URL: /
-Timestamp: Thu Mar 14 2024 16:31:35 GMT-0700 (Pacific Daylight Time)
-
-URL: /
-Timestamp: Thu Mar 14 2024 16:32:27 GMT-0700 (Pacific Daylight Time)
-
+::ffff:127.0.0.1 - - [15/Mar/2024:18:53:38 +0000] "GET / HTTP/1.1" 304 - "-" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.0 Safari/605.1.15"
+::ffff:127.0.0.1 - - [15/Mar/2024:18:53:38 +0000] "GET /WebSummary.vue.map HTTP/1.1" 404 157 "-" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36"
+::ffff:127.0.0.1 - - [15/Mar/2024:18:53:38 +0000] "GET /WebExplain.vue.map HTTP/1.1" 404 157 "-" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36"
+::ffff:127.0.0.1 - - [15/Mar/2024:18:53:38 +0000] "GET /IsLoginDialog.vue.map HTTP/1.1" 404 160 "-" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36"
+::ffff:127.0.0.1 - - [15/Mar/2024:18:53:39 +0000] "GET /github-markdown-css HTTP/1.1" 404 158 "http://127.0.0.1:8080/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.0 Safari/605.1.15"
+::ffff:127.0.0.1 - - [15/Mar/2024:18:53:39 +0000] "GET /WebExplain.vue.map HTTP/1.1" 404 157 "-" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36"
+::ffff:127.0.0.1 - - [15/Mar/2024:18:53:39 +0000] "GET /WebSummary.vue.map HTTP/1.1" 404 157 "-" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36"
+::ffff:127.0.0.1 - - [15/Mar/2024:18:53:39 +0000] "GET /IsLoginDialog.vue.map HTTP/1.1" 404 160 "-" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36"
+::ffff:127.0.0.1 - - [15/Mar/2024:18:53:43 +0000] "GET /documentation HTTP/1.1" 304 - "-" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.0 Safari/605.1.15"
+::ffff:127.0.0.1 - - [15/Mar/2024:18:53:43 +0000] "GET /WebExplain.vue.map HTTP/1.1" 404 157 "-" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36"
+::ffff:127.0.0.1 - - [15/Mar/2024:18:53:43 +0000] "GET /WebSummary.vue.map HTTP/1.1" 404 157 "-" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36"
+::ffff:127.0.0.1 - - [15/Mar/2024:18:53:43 +0000] "GET /IsLoginDialog.vue.map HTTP/1.1" 404 160 "-" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36"
+::ffff:127.0.0.1 - - [15/Mar/2024:18:53:44 +0000] "GET /github-markdown-css HTTP/1.1" 404 158 "http://127.0.0.1:8080/documentation" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.0 Safari/605.1.15"
+::ffff:127.0.0.1 - - [15/Mar/2024:18:53:44 +0000] "GET /WebSummary.vue.map HTTP/1.1" 404 157 "-" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36"
+::ffff:127.0.0.1 - - [15/Mar/2024:18:53:44 +0000] "GET /WebExplain.vue.map HTTP/1.1" 404 157 "-" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36"
+::ffff:127.0.0.1 - - [15/Mar/2024:18:53:44 +0000] "GET /IsLoginDialog.vue.map HTTP/1.1" 404 160 "-" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36"
+::1 - - [15/Mar/2024:19:26:28 +0000] "GET / HTTP/1.1" 200 350 "-" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36"
+::1 - - [15/Mar/2024:19:26:29 +0000] "GET /github-markdown-css HTTP/1.1" 404 158 "http://localhost:8080/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36"
+::1 - - [15/Mar/2024:19:26:30 +0000] "GET /favicon.ico HTTP/1.1" 404 150 "http://localhost:8080/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36"
+::1 - - [15/Mar/2024:19:27:02 +0000] "GET /documentation HTTP/1.1" 404 152 "-" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36"
+::1 - - [15/Mar/2024:19:27:02 +0000] "GET /github-markdown-css HTTP/1.1" 404 158 "http://localhost:8080/documentation" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36"
+::1 - - [15/Mar/2024:19:27:34 +0000] "GET /movies HTTP/1.1" 200 556 "-" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36"
+::1 - - [15/Mar/2024:19:27:35 +0000] "GET /github-markdown-css HTTP/1.1" 404 158 "http://localhost:8080/movies" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36"
+::1 - - [15/Mar/2024:19:28:06 +0000] "GET /documentation.html HTTP/1.1" 200 1809 "-" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36"
+::1 - - [15/Mar/2024:19:28:06 +0000] "GET /github-markdown-css HTTP/1.1" 404 158 "http://localhost:8080/documentation.html" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36"
+::1 - - [15/Mar/2024:19:28:14 +0000] "GET /index.html HTTP/1.1" 200 350 "-" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36"
+::1 - - [15/Mar/2024:19:28:14 +0000] "GET /github-markdown-css HTTP/1.1" 404 158 "http://localhost:8080/index.html" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36"
+::1 - - [15/Mar/2024:19:28:22 +0000] "GET / HTTP/1.1" 304 - "-" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36"
+::1 - - [15/Mar/2024:19:28:22 +0000] "GET /github-markdown-css HTTP/1.1" 404 158 "http://localhost:8080/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36"
+::1 - - [15/Mar/2024:19:28:43 +0000] "GET / HTTP/1.1" 200 25 "-" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36"
+::1 - - [15/Mar/2024:19:28:43 +0000] "GET /github-markdown-css HTTP/1.1" 404 158 "http://localhost:8080/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36"
+::1 - - [15/Mar/2024:19:28:48 +0000] "GET /test.html HTTP/1.1" 200 350 "-" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36"
+::1 - - [15/Mar/2024:19:28:48 +0000] "GET /github-markdown-css HTTP/1.1" 404 158 "http://localhost:8080/test.html" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36"
+::1 - - [15/Mar/2024:19:29:55 +0000] "GET /landing.html HTTP/1.1" 200 1349 "-" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36"
+::1 - - [15/Mar/2024:19:29:55 +0000] "GET /img/logo.jpg HTTP/1.1" 200 13738 "http://localhost:8080/landing.html" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36"
+::1 - - [15/Mar/2024:19:29:55 +0000] "GET /github-markdown-css HTTP/1.1" 404 158 "http://localhost:8080/landing.html" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36"
+::1 - - [15/Mar/2024:19:29:55 +0000] "GET /img/pier.jpg HTTP/1.1" 200 76604 "http://localhost:8080/landing.html" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36"
+::1 - - [15/Mar/2024:19:34:19 +0000] "GET / HTTP/1.1" 304 - "-" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36"
+::1 - - [15/Mar/2024:19:34:20 +0000] "GET /github-markdown-css HTTP/1.1" 404 158 "http://localhost:8080/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36"
+::1 - - [15/Mar/2024:19:34:23 +0000] "GET /butts HTTP/1.1" 404 144 "-" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36"
+::1 - - [15/Mar/2024:19:34:23 +0000] "GET /github-markdown-css HTTP/1.1" 404 158 "http://localhost:8080/butts" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36"
+::1 - - [15/Mar/2024:19:35:35 +0000] "GET /WebExplain.vue.map HTTP/1.1" 404 157 "-" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36"
+::1 - - [15/Mar/2024:19:35:35 +0000] "GET /IsLoginDialog.vue.map HTTP/1.1" 404 160 "-" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36"
+::1 - - [15/Mar/2024:19:35:35 +0000] "GET /WebSummary.vue.map HTTP/1.1" 404 157 "-" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36"
