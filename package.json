@@ -1,0 +1,32 @@
+{
+  "name": "movie_api",
+  "version": "1.0.0",
+  "description": "The server-side component of a movie database web application",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \\\"Error: no test specified\\\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/animalelder/movie_api.git"
+  },
+  "keywords": [
+    "node",
+    "movies",
+    "api"
+  ],
+  "author": "William Learned",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/animalelder/movie_api/issues"
+  },
+  "homepage": "https://github.com/animalelder/movie_api#readme",
+  "devDependencies": {
+    "eslint": "^8.57.0"
+  },
+  "dependencies": {
+    "body-parser": "^1.20.2",
+    "express": "^4.18.3",
+    "lodash": "^4.17.21"
+  }
+}
