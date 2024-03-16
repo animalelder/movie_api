@@ -1,0 +1,129 @@
+@import url('https://fonts.googleapis.com/css2?family=PT+Sans&display=swap');
+:root {
+	--primary-color: #064226;
+	--secondary-color: #036e31;
+	--font-color--white: #fff;
+}
+
+body {
+	font-family: 'Helvetica', sans-serif;
+	background-color: antiquewhite;
+	width: 90vw;
+	padding-left: 1vw;
+}
+
+.intro {
+	text-indent: 1rem;
+}
+h1 {
+	text-align: center;
+}
+
+h1,
+h2,
+h3 {
+	color: rgba(0, 0, 0, 0.9);
+}
+
+ul {
+	padding-top: 5px;
+	padding-bottom: 5px;
+	background-color: whitesmoke;
+	border: 5px solid var(--primary-color);
+	border-radius: 3px;
+}
+
+li {
+	padding-top: 5px;
+}
+
+table {
+	border-collapse: collapse;
+	margin-top: 20px;
+	width: 90vw;
+	background-color: whitesmoke;
+}
+
+thead tr th {
+	background-color: var(--primary-color);
+	color: #fff;
+	font-size: 1.2rem;
+	letter-spacing: 0.065em;
+	text-align: left;
+}
+
+tr th {
+	background-color: var(--secondary-color);
+	color: #fff;
+	text-align: left;
+}
+
+tr {
+	border: 1px solid var(--secondary-color);
+}
+
+th,
+td {
+	padding: 10px 30px 10px 10px;
+}
+
+.get,
+.put,
+.post,
+.delete {
+	color: var(--font-color--white);
+	font-size: 2em;
+	text-align: center;
+}
+
+.get {
+	background-color: #008000;
+}
+
+.put {
+	background-color: #ffa500;
+}
+
+.post {
+	background-color: #092947;
+}
+
+.delete {
+	background-color: #ff0000;
+}
+
+span.get,
+span.post,
+span.put,
+span.delete {
+	padding: 0 10px;
+	border-radius: 3px;
+}
+
+.endpoint-table {
+	width: 100%;
+}
+
+.endpoint-table tr td,
+.endpoint-table thead th {
+	width: 20%;
+}
+
+.api-body {
+	color: #1500ff;
+	padding-left: 20px;
+	font-size: 0.75rem;
+	word-break: break-word;
+}
+
+.object-key {
+	color: #790404;
+}
+
+.response {
+	min-width: 180px;
+}
+
+a {
+	color: #fff;
+}
