@@ -93,7 +93,7 @@
 						</tr>
 						<tr>
 							<th>Get Movie by Title</th>
-							<td>/movies/[movie title]</td>
+							<td>/movies/[movieTitle]</td>
 							<td>
 								Return data (description, genre, director,
 								artwork) about a single movie to user
@@ -101,13 +101,15 @@
 						</tr>
 						<tr>
 							<th>Get all movies of a genre</th>
-							<td>/movies/genre/[genre name]</td>
+							<td>/movies/genre/[genreName]</td>
 							<td>Return a list of all movies to user</td>
 						</tr>
 						<tr>
-							<th>Get info on Director by name</th>
-							<td>/movies/director/[director name]</td>
-							<td>Return a list of all movies to user</td>
+							<th>Get movies of a Director by name</th>
+							<td>/movies/director/[directorName]</td>
+							<td>
+								Return a list of all director's movies to user
+							</td>
 						</tr>
 						<tr>
 							<th>Register as new user</th>
@@ -121,7 +123,7 @@
 						</tr>
 						<tr>
 							<th>Add a movie to favorites</th>
-							<td>/users/[username]/favorites/[movie ID]</td>
+							<td>/users/[username]/favorites/[movieID]</td>
 							<td>
 								[movie title] has been added to [username]'s
 								favorites
@@ -129,7 +131,7 @@
 						</tr>
 						<tr>
 							<th>Remove movie from favorites</th>
-							<td>/users/[username]/favorites/[movie ID]</td>
+							<td>/users/[username]/favorites/[movieID]</td>
 							<td>
 								[movie title] has been removed from [username]'s
 								favorites
@@ -240,8 +242,8 @@
 					</thead>
 					<tr>
 						<td>
-							Return data about a genre (description) by
-							name/title (e.g., Animated)
+							Return list of movies by of requested genre (e.g.,
+							Animated)
 						</td>
 						<td>/genres/[genreName]</td>
 						<td class="get">GET</td>
@@ -251,7 +253,7 @@
 							{<br />
 							<div class="api-body">
 								<span class="object-key">title:</span>
-								"Animation",<br />
+								"Animated",<br />
 								<span class="object-key">description:</span>
 								"Animated films are often family friendly and
 								computer animation is common now." <br />
@@ -362,7 +364,8 @@
 					</thead>
 					<tr>
 						<td>
-							Allow users to update their user info (username).
+							Allow users to update their user info (Ex:
+							username).
 						</td>
 						<td>/users/[username]</td>
 						<td class="put">PUT</td>
@@ -408,19 +411,7 @@
 						</td>
 						<td>/users/[username]/favorites/[movie-id]</td>
 						<td class="put">PUT</td>
-						<td>
-							A JSON Object containing the movie to be added to
-							the user's favorite list. <br />
-							{<br />
-							<div class="api-body">
-								<span class="object-key">id:</span> 5645, <br />
-								<span class="object-key">title:</span>
-								"Titanic",<br />
-								<span class="object-key">url:</span>
-								"movies/5645"<br />
-							</div>
-							}
-						</td>
+						<td>None</td>
 						<td>
 							A JSON Object containing the movie that was added to
 							the user's favorite list. <br />

@@ -8,7 +8,7 @@
 body {
 	font-family: 'Helvetica', sans-serif;
 	background-color: antiquewhite;
-	width: 90vw;
+	width: 100vw;
 	padding-left: 1vw;
 }
 
@@ -40,7 +40,7 @@ li {
 table {
 	border-collapse: collapse;
 	margin-top: 20px;
-	width: 90vw;
+	max-width: 90%;
 	background-color: whitesmoke;
 }
 
@@ -98,10 +98,6 @@ span.put,
 span.delete {
 	padding: 0 10px;
 	border-radius: 3px;
-}
-
-.endpoint-table {
-	width: 100%;
 }
 
 .endpoint-table tr td,
