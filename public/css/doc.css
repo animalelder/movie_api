@@ -1,15 +1,14 @@
 @import url('https://fonts.googleapis.com/css2?family=PT+Sans&display=swap');
 :root {
-	--primary-color: #064226;
+	--primary-color: #006134;
 	--secondary-color: #036e31;
 	--font-color--white: #fff;
 }
 
 body {
 	font-family: 'Helvetica', sans-serif;
-	background-color: antiquewhite;
-	width: 100vw;
-	padding-left: 1vw;
+	background-color: rgb(251, 241, 228);
+	box-sizing: border-box;
 }
 
 .intro {
@@ -22,15 +21,22 @@ h1 {
 h1,
 h2,
 h3 {
-	color: rgba(0, 0, 0, 0.9);
+	color: rgba(0, 0, 0, 0.8);
+}
+
+h2 {
+	margin-left: 20px;
 }
 
 ul {
+	display: grid;
 	padding-top: 5px;
 	padding-bottom: 5px;
 	background-color: whitesmoke;
-	border: 5px solid var(--primary-color);
+	border: 5px solid #055100c2;
 	border-radius: 3px;
+	width: 90%;
+	margin: auto;
 }
 
 li {
@@ -39,7 +45,9 @@ li {
 
 table {
 	border-collapse: collapse;
-	margin-top: 20px;
+	margin: auto;
+	column-count: 5;
+	column-width: 20%;
 	max-width: 90%;
 	background-color: whitesmoke;
 }
@@ -65,6 +73,7 @@ tr {
 th,
 td {
 	padding: 10px 30px 10px 10px;
+	border: 1px solid var(--primary-color);
 }
 
 .get,
@@ -105,10 +114,13 @@ span.delete {
 	width: 20%;
 }
 
+.response-body {
+	font-size: 0.75rem;
+}
+
 .api-body {
 	color: #1500ff;
 	padding-left: 20px;
-	font-size: 0.75rem;
 	word-break: break-word;
 }
 

@@ -164,7 +164,7 @@
 						<td>/movies</td>
 						<td class="get">GET</td>
 						<td>None</td>
-						<td>
+						<td class="response-body">
 							A JSON object holidng data about all the movies
 							<br />
 							[{<br />
@@ -203,10 +203,10 @@
 							Return data (description, genre, director, image
 							URL, if featured title) about a movie by title
 						</td>
-						<td>/movies/[movieTitle]</td>
+						<td>/movies/ [movieTitle]</td>
 						<td class="get">GET</td>
 						<td>None</td>
-						<td>
+						<td class="response-body">
 							A JSON object holidng data about a single movies
 							<br />
 							{<br />
@@ -245,10 +245,10 @@
 							Return list of movies by of requested genre (e.g.,
 							Animated)
 						</td>
-						<td>/genres/[genreName]</td>
+						<td>/genres/ [genreName]</td>
 						<td class="get">GET</td>
 						<td>None</td>
-						<td>
+						<td class="response-body">
 							A JSON object about requested genre <br />
 							{<br />
 							<div class="api-body">
@@ -278,10 +278,10 @@
 							Return data about a director (bio, birth year, death
 							year) by name
 						</td>
-						<td>/directors/[directorName]</td>
+						<td>/directors/ [directorName]</td>
 						<td class="get">GET</td>
 						<td>None</td>
-						<td>
+						<td class="response-body">
 							A JSON object about a single director <br />
 							{<br />
 							<div class="api-body">
@@ -315,7 +315,7 @@
 
 						<td>/users</td>
 						<td class="post">POST</td>
-						<td>
+						<td class="response-body">
 							A Json object holding data about the user to add,
 							structure like:
 							<br />
@@ -333,7 +333,7 @@
 							</div>
 							}
 						</td>
-						<td>
+						<td class="response-body">
 							A Json object holding data about the user that was
 							added, including an id:
 							<br />
@@ -369,7 +369,7 @@
 						</td>
 						<td>/users/[username]</td>
 						<td class="put">PUT</td>
-						<td>
+						<td class="response-body">
 							A JSON object containing the user's new Username to
 							add.
 							<br />
@@ -380,7 +380,7 @@
 							</div>
 							}
 						</td>
-						<td>
+						<td class="response-body">
 							A JSON Object containing the user's new Username
 							that was added. <br />
 							{<br />
@@ -409,10 +409,10 @@
 							favorites (showing only a text that a movie has been
 							added).
 						</td>
-						<td>/users/[username]/favorites/[movie-id]</td>
+						<td>/users/[username]/ favorites/ [movie-id]</td>
 						<td class="put">PUT</td>
 						<td>None</td>
-						<td>
+						<td class="response-body">
 							A JSON Object containing the movie that was added to
 							the user's favorite list. <br />
 							{<br />
@@ -444,10 +444,10 @@
 							favorites (showing only a text that a movie has been
 							removed).
 						</td>
-						<td>/users/[username]/favorites/[movie-id]</td>
+						<td>/users/[username]/ favorites/ [movie-id]</td>
 						<td class="delete">DELETE</td>
 						<td>None</td>
-						<td>
+						<td class="response-body">
 							Text message indicating movie was removed from
 							user's favorites list.
 						</td>
@@ -472,7 +472,7 @@
 						<td>/users/[username]</td>
 						<td class="delete">DELETE</td>
 						<td>None</td>
-						<td>
+						<td class="response-body">
 							Text message indicating user account was deleted.
 						</td>
 					</tr>
