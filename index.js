@@ -8,11 +8,14 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 // This is the Cross Origin Resource Sharing policy for the application
 // This is to allow the front-end to access the API
-/* const cors = require('cors');
+const cors = require('cors');
 app.use(cors());
 
 // Change to server
-let allowedOrigins = ['http://localhost:8080'];
+let allowedOrigins = [
+	'http://localhost:8080',
+	'https://cine-data-db-04361cdbefbe.herokuapp.com/',
+];
 
 app.use(
 	cors({
@@ -28,7 +31,7 @@ app.use(
 			return callback(null, true);
 		},
 	})
-); */
+);
 
 let auth = require('./auth')(app);
 
