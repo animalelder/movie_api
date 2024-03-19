@@ -170,3 +170,6 @@
 ::1 - - [19/Mar/2024:04:43:48 +0000] "GET /users/william HTTP/1.1" 400 17 "-" "PostmanRuntime/7.37.0"
 ::1 - - [19/Mar/2024:04:44:27 +0000] "GET /users/william HTTP/1.1" 200 282 "-" "PostmanRuntime/7.37.0"
 ::1 - - [19/Mar/2024:04:46:03 +0000] "GET /movies/ HTTP/1.1" 201 8537 "-" "PostmanRuntime/7.37.0"
+127.0.0.1 - - [19/Mar/2024:20:39:45 +0000] "POST /users/ HTTP/1.1" 201 193 "-" "PostmanRuntime/7.37.0"
+127.0.0.1 - - [19/Mar/2024:20:47:30 +0000] "PUT /users/orville HTTP/1.1" 409 67 "-" "PostmanRuntime/7.37.0"
+127.0.0.1 - - [19/Mar/2024:20:47:41 +0000] "PUT /users/orville HTTP/1.1" 200 233 "-" "PostmanRuntime/7.37.0"
