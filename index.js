@@ -6,6 +6,30 @@ const bodyParser = require('body-parser');
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
+// This is the Cross Origin Resource Sharing policy for the application
+// This is to allow the front-end to access the API
+/* const cors = require('cors');
+app.use(cors());
+
+// Change to server
+let allowedOrigins = ['http://localhost:8080'];
+
+app.use(
+	cors({
+		origin: (origin, callback) => {
+			if (!origin) return callback(null, true);
+			if (allowedOrigins.indexOf(origin) === -1) {
+				// If a specific origin isn’t found on the list of allowed origins
+				let message =
+					'The CORS policy for this application doesn’t allow access from origin ' +
+					origin;
+				return callback(new Error(message), false);
+			}
+			return callback(null, true);
+		},
+	})
+); */
+
 let auth = require('./auth')(app);
 
 const passport = require('passport');
@@ -13,6 +37,8 @@ require('./passport');
 
 // I don't think we need uuid but I am keepin this here in case.
 // const uuid = require('uuid');
+
+const { check, validationResult } = require('express-validator');
 
 const fs = require('fs');
 const path = require('path');
@@ -135,7 +161,7 @@ app.get(
 	passport.authenticate('jwt', { session: false }),
 	async (req, res) => {
 		// CONDITION TO CHECK ADDED HERE
-		if (req.user.Username !== req.params.userName) {
+		if (req.user.username !== req.params.userName) {
 			return res.status(400).send('Permission denied');
 		}
 		// CONDITION ENDS
@@ -160,32 +186,57 @@ app.get(
 	Email: String,
 	Birthdate: Date
 } */
-app.post('/users', async (req, res) => {
-	await Users.findOne({ username: req.body.username })
-		.then((user) => {
-			if (user) {
-				return res
-					.status(400)
-					.send(req.body.username + ' already exists');
-			} else {
-				Users.create({
-					username: req.body.username,
-					password: req.body.password,
-					email: req.body.email,
-					birthdate: req.body.birthdate,
-				})
-					.then((user) => res.status(201).json(user))
-					.catch((error) => {
-						console.error(error);
-						res.status(500).send('Error: ' + error);
-					});
-			}
-		})
-		.catch((error) => {
-			console.error(error);
-			res.status(500).send('Error: ' + error);
-		});
-});
+app.post(
+	'/users',
+	// Validation logic here for request
+	//you can either use a chain of methods like .not().isEmpty()
+	//which means "opposite of isEmpty" in plain english "is not empty"
+	//or use .isLength({min: 5}) which means
+	//minimum value of 5 characters are only allowed
+	[
+		check('username', 'Username is required').isLength({ min: 5 }),
+		check(
+			'username',
+			'Username contains non alphanumeric characters - not allowed.'
+		).isAlphanumeric(),
+		check('password', 'Password is required').not().isEmpty(),
+		check('email', 'Email does not appear to be valid').isEmail(),
+	],
+	async (req, res) => {
+		// check the validation object for errors
+		let errors = validationResult(req);
+
+		if (!errors.isEmpty()) {
+			return res.status(422).json({ errors: errors.array() });
+		}
+
+		let hashedPassword = Users.hashPassword(req.body.password);
+		await Users.findOne({ username: req.body.username })
+			.then((user) => {
+				if (user) {
+					return res
+						.status(400)
+						.send(req.body.username + ' already exists');
+				} else {
+					Users.create({
+						username: req.body.username,
+						password: hashedPassword,
+						email: req.body.email,
+						birthdate: req.body.birthdate,
+					})
+						.then((user) => res.status(201).json(user))
+						.catch((error) => {
+							console.error(error);
+							res.status(500).send('Error: ' + error);
+						});
+				}
+			})
+			.catch((error) => {
+				console.error(error);
+				res.status(500).send('Error: ' + error);
+			});
+	}
+);
 
 // *** PUT requests ***
 
@@ -203,26 +254,76 @@ app.post('/users', async (req, res) => {
 app.put(
 	'/users/:Username',
 	passport.authenticate('jwt', { session: false }),
-	async (req, res) => {
-		// CONDITION TO CHECK ADDED HERE
-		if (req.user.Username !== req.params.Username) {
-			return res.status(400).send('Permission denied');
+	[
+		check(
+			'username',
+			'Username with min. 5 characters is required'
+		).isLength({ min: 5 }),
+		check(
+			'username',
+			'Username contains non alphanumeric characters - not allowed.'
+		).isAlphanumeric(),
+		check('password', 'Password is required').not().isEmpty(),
+		check('email', 'Email does not appear to be valid').isEmail(),
+	],
+	(req, res) => {
+		let errors = validationResult(req);
+		if (!errors.isEmpty()) {
+			return res.status(422).json({ errors: errors.array() });
 		}
-		// CONDITION ENDS
-		await Users.findOneAndUpdate(
-			{ username: req.params.Username },
-			{
-				$set: {
-					username: req.body.username,
-					password: req.body.password,
-					email: req.body.email,
-					birthdate: req.body.birthdate,
-				},
-			},
-			{ new: true }
-		) // This line makes sure that the updated document is returned
-			.then((updatedUser) => {
-				res.json(updatedUser);
+		Users.findOne({
+			username: req.body.username,
+			_id: { $ne: req.user._id },
+		})
+			.then((existingUsernameUser) => {
+				if (existingUsernameUser) {
+					return res
+						.status(409)
+						.send(
+							req.body.username +
+								' already exists, please choose another username.'
+						);
+				} else {
+					Users.findOne({
+						email: req.body.email,
+						_id: { $ne: req.user._id },
+					})
+						.then((existingEmailUser) => {
+							if (existingEmailUser) {
+								const errorMessage =
+									req.body.email +
+									' already exists, please choose another email.';
+								return res.status(409).send(errorMessage);
+							} else {
+								let hashedPassword = Users.hashPassword(
+									req.body.password
+								);
+								Users.findOneAndUpdate(
+									{ username: req.params.Username },
+									{
+										$set: {
+											username: req.body.username,
+											password: hashedPassword,
+											email: req.body.email,
+											birthdate: req.body.birthdate,
+										},
+									},
+									{ new: true }
+								)
+									.then((updatedUser) => {
+										res.json(updatedUser);
+									})
+									.catch((err) => {
+										console.error(err);
+										res.status(500).send('Error: ' + err);
+									});
+							}
+						})
+						.catch((err) => {
+							console.error(err);
+							res.status(500).send('Error: ' + err);
+						});
+				}
 			})
 			.catch((err) => {
 				console.error(err);
@@ -239,7 +340,7 @@ app.put(
 	passport.authenticate('jwt', { session: false }),
 	async (req, res) => {
 		// CONDITION TO CHECK ADDED HERE
-		if (req.user.Username !== req.params.userName) {
+		if (req.user.username !== req.params.userName) {
 			return res.status(400).send('Permission denied');
 		}
 		// CONDITION ENDS
@@ -270,7 +371,7 @@ app.delete(
 	passport.authenticate('jwt', { session: false }),
 	async (req, res) => {
 		// CONDITION TO CHECK ADDED HERE
-		if (req.user.Username !== req.params.userName) {
+		if (req.user.username !== req.params.userName) {
 			return res.status(400).send('Permission denied');
 		}
 		// CONDITION ENDS
