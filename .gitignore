@@ -9,6 +9,8 @@ ehthumbs.db
 Thumbs.db
 new_doc.css
 new_documentation.html
+cine_movies.json
+cine_users.json
 
 /node_modules/
 /archive/
