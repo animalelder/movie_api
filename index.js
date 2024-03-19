@@ -64,7 +64,7 @@ const Users = Models.User;
 }); */
 
 mongoose.connect(process.env.CONNECTION_URI, {
-	userNewUrlParser: true,
+	useNewUrlParser: true,
 	useUnifiedTopology: true,
 });
 
