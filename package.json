@@ -1,41 +1,42 @@
 {
-  "name": "movie_api",
-  "version": "1.0.0",
-  "description": "The server-side component of a movie database web application",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \\\"Error: no test specified\\\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/animalelder/movie_api.git"
-  },
-  "keywords": [
-    "node",
-    "movies",
-    "api"
-  ],
-  "author": "William Learned",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/animalelder/movie_api/issues"
-  },
-  "homepage": "https://github.com/animalelder/movie_api#readme",
-  "devDependencies": {
-    "eslint": "^8.57.0"
-  },
-  "dependencies": {
-    "bcrypt": "^5.1.1",
-    "body-parser": "^1.20.2",
-    "cors": "^2.8.5",
-    "express": "^4.18.3",
-    "express-validator": "^7.0.1",
-    "jsonwebtoken": "^9.0.2",
-    "lodash": "^4.17.21",
-    "mongoose": "^8.2.2",
-    "morgan": "^1.10.0",
-    "passport": "^0.7.0",
-    "passport-jwt": "^4.0.1",
-    "passport-local": "^1.0.0"
-  }
+	"name": "movie_api",
+	"version": "1.0.0",
+	"description": "The server-side component of a movie database web application",
+	"main": "index.js",
+	"scripts": {
+		"test": "echo \\\"Error: no test specified\\\" && exit 1",
+		"start": "node index.js"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/animalelder/movie_api.git"
+	},
+	"keywords": [
+		"node",
+		"movies",
+		"api"
+	],
+	"author": "William Learned",
+	"license": "ISC",
+	"bugs": {
+		"url": "https://github.com/animalelder/movie_api/issues"
+	},
+	"homepage": "https://github.com/animalelder/movie_api#readme",
+	"devDependencies": {
+		"eslint": "^8.57.0"
+	},
+	"dependencies": {
+		"bcrypt": "^5.1.1",
+		"body-parser": "^1.20.2",
+		"cors": "^2.8.5",
+		"express": "^4.18.3",
+		"express-validator": "^7.0.1",
+		"jsonwebtoken": "^9.0.2",
+		"lodash": "^4.17.21",
+		"mongoose": "^8.2.2",
+		"morgan": "^1.10.0",
+		"passport": "^0.7.0",
+		"passport-jwt": "^4.0.1",
+		"passport-local": "^1.0.0"
+	}
 }
