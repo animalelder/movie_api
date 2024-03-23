@@ -83,20 +83,17 @@ app.get('/', (req, res) => {
 
 // Get a list of all movies
 // Added authentication to this route so that only users with a valid JWT can access it
-app.get(
-  '/movies',
-  passport.authenticate('jwt', { session: false }),
-  async (req, res) => {
-    await Movies.find()
-      .then((movies) => {
-        res.status(201).json(movies);
-      })
-      .catch((err) => {
-        console.error(err);
-        res.status(500).send('Error: ' + err);
-      });
-  }
-);
+// ** REMOVING JWT AUTHENTICATION FOR TESTING PURPOSES **
+app.get('/movies', async (req, res) => {
+  await Movies.find()
+    .then((movies) => {
+      res.status(201).json(movies);
+    })
+    .catch((err) => {
+      console.error(err);
+      res.status(500).send('Error: ' + err);
+    });
+});
 
 // Get a movie by title
 //Title is taken from URL
