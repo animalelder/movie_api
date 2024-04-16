@@ -16,6 +16,7 @@ let allowedOrigins = [
   'http://localhost:8080',
   'http://localhost:1234',
   'https://cine-data-db-04361cdbefbe.herokuapp.com/',
+  'https://cinedatadb.netlify.app',
 ];
 
 app.use(
