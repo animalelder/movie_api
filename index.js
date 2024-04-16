@@ -14,6 +14,9 @@ app.use(cors());
 // Change to server
 let allowedOrigins = [
   'http://localhost:8080',
+  '*',
+  'http://localhost:134',
+  'http://localhost:12',
   'http://localhost:1234',
   'https://cine-data-db-04361cdbefbe.herokuapp.com/',
   'https://cinedatadb.netlify.app',
