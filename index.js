@@ -18,6 +18,7 @@ let allowedOrigins = [
   'http://localhost:12',
   'http://localhost:1234',
   'https://cine-data-db-04361cdbefbe.herokuapp.com/',
+  'https://cinedata-movie-api.onrender.com',
   'https://cinedatadb.netlify.app',
 ];
 
