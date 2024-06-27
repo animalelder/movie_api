@@ -16,7 +16,7 @@ let allowedOrigins = [
   'http://localhost:8080',
   'http://localhost:4200',
   'https://cinedata-movie-api.onrender.com',
-  'https://cinedatadb.netlify.app',
+  'https://github.com',
   'https://animalelder.github.io'
 ];
 
