@@ -82,16 +82,7 @@ app.get('/', (req, res) => {
   res.send(responseText);
 });
 
-/**
- * READ movie list
- * @async
- * @function
- * @name getAllMovies
- * @param {Object} req - Express request object.
- * @param {Object} res - Express response object.
- * @throws {Error} - If there is an error while retrieving movies from the database.
- * @returns {Object} - Returns JSON response containing all movies.
- */
+
 /**
  * READ movie list
  * @async
