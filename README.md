@@ -2,9 +2,9 @@
 
 ## Node.JS server and API Project
 
-Check out the [documentation](https://cine-data-db-04361cdbefbe.herokuapp.com/documentation.html) for this project for more details.
+Check out the [documentation](https://cinedata-movie-api.onrender.com/documentation.html) for this project for more details.
 
-### What can the API do?
+### API Endpoints
 
 - Return a list of all movies to the user
 - Return data about a single movie by title to the user

@@ -11,6 +11,7 @@ new_doc.css
 new_documentation.html
 cine_movies.json
 cine_users.json
+log.txt
 
 /node_modules/
 /archive/
