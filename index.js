@@ -13,7 +13,8 @@ app.use(cors());
 
 // Change to server
 let allowedOrigins = [
-  'http://localhost:8080',
+  'http://localhost:3000',
+  'https://cinedatadb.netlify.app',
   'http://localhost:4200',
   'https://cinedata-movie-api.onrender.com',
   'https://github.com',
