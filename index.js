@@ -2,7 +2,6 @@ import express, { static as staticFiles } from 'express';
 const app = express();
 
 import { json, urlencoded } from 'body-parser';
-import { allowedOrigins } from '@/allowedOrigins';
 
 app.use(json());
 app.use(urlencoded({ extended: true }));
@@ -10,7 +9,7 @@ app.use(urlencoded({ extended: true }));
 // This is the Cross Origin Resource Sharing policy for the application
 // This is to allow the front-end to access the API
 import cors from 'cors';
-import { allowedOrigins } from './allowedOrigins';
+import { allowedOrigins } from '@/allowedOrigins';
 // app.use(cors());
 
 app.use(
@@ -32,7 +31,7 @@ let auth = require('@/controllers/auth/auth')(app);
 import { authenticate } from 'passport';
 import '@/controllers/auth/passport';
 
-import { check, validationResult } from 'express-validator';
+import { check } from 'express-validator';
 
 import { createWriteStream } from 'fs';
 import { join } from 'path';
@@ -70,7 +69,7 @@ app.use(staticFiles('public'));
  * @param {Object} res - Express response object.
  * @returns {Object} - Sends a string response "Welcome to my movie page!".
  */
-app.get('/', (req, res) => {
+app.get('/', (_req, res) => {
   let responseText = 'Hey there! I love movies.';
   res.send(responseText);
 });
@@ -136,16 +135,16 @@ app.get('/movies/directors/:dirName', authenticate('jwt', { session: false }), m
  * @throws {Error} - If there is an error while retrieving users from the database.
  * @returns {Object} - Returns JSON response containing the all users.
  */
-// app.get('/users', async (req, res) => {
-//   await Users.find()
-//     .then((users) => {
-//       res.status(201).json(users);
-//     })
-//     .catch((err) => {
-//       console.error(err);
-//       res.status(500).send('Error: ' + err);
-//     });
-// });
+app.get('/users', async (req, res) => {
+  await Users.find()
+    .then((users) => {
+      res.status(201).json(users);
+    })
+    .catch((err) => {
+      console.error(err);
+      res.status(500).send('Error: ' + err);
+    });
+});
 
 /**
  * READ a user by username
@@ -268,12 +267,6 @@ app.use((err, req, res, next) => {
   res.status(500).send('Uh oh! Something did not work as expected!');
 });
 
-/**
- * Listen for requests
- * @function
- * @name listen
- * @param {number} port - Port number.
- */
 const port = process.env.PORT || 8080;
 app.listen(port, '0.0.0.0', () => {
   console.log('Your app is listening on port' + port);
