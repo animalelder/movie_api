@@ -59,8 +59,6 @@ import * as movies from '@/controllers/movies';
 // Serve files in the public folder
 app.use(staticFiles('public'));
 
-//  *** GET requests ***
-
 /**
  * READ index page
  * @function
@@ -70,8 +68,7 @@ app.use(staticFiles('public'));
  * @returns {Object} - Sends a string response "Welcome to my movie page!".
  */
 app.get('/', (_req, res) => {
-  let responseText = 'Hey there! I love movies.';
-  res.send(responseText);
+  return res.status(200).json({ message: 'Hey there! I love movies.' });
 });
 
 /**

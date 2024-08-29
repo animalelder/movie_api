@@ -1,11 +1,11 @@
 {
   "name": "movie_api",
   "version": "1.0.0",
-  "description": "The server-side component of a movie database web application",
+  "description": "The REST API for a movie database",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js",
-    "dev": "nodemon index.js",
+    "start": "node src/index.js",
+    "dev": "nodemon --exec babel-node src/index.js",
     "lint": "eslint ."
   },
   "repository": {
@@ -24,6 +24,9 @@
   },
   "homepage": "https://github.com/animalelder/movie_api#readme",
   "devDependencies": {
+    "@babel/core": "^7.25.2",
+    "@babel/node": "^7.25.0",
+    "@babel/preset-env": "^7.25.4",
     "eslint": "^8.57.0",
     "nodemon": "^3.1.4"
   },
@@ -31,6 +34,7 @@
     "bcrypt": "^5.1.1",
     "body-parser": "^1.20.2",
     "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
     "express": "^4.19.2",
     "express-validator": "^7.0.1",
     "jsonwebtoken": "^9.0.2",
