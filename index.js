@@ -248,7 +248,7 @@ app.post(
         return res.status(409).send('Username already exists');
       }
 
-      const hashedPassword = await bcrypt.hash(req.body.password, 10);
+      const hashedPassword = await Users.hashPassword(req.body.password, 10);
 
       await Users.create({
         username: req.body.username,
@@ -296,6 +296,7 @@ app.put(
     if (!errors.isEmpty()) {
       return res.status(422).json({ errors: errors.array() });
     }
+    const hashedPassword = await Users.hashPassword(req.body.password);
 
     const existingUsername = await Users.findOne({
       username: req.body.username,
