@@ -12,6 +12,7 @@ new_documentation.html
 cine_movies.json
 cine_users.json
 log.txt
+.env
 
 /node_modules/
 /archive/

@@ -1,5 +1,6 @@
 const express = require('express');
 const app = express();
+import 'dotenv/config';
 
 const bodyParser = require('body-parser');
 
@@ -14,6 +15,7 @@ app.use(cors());
 // Change to server
 let allowedOrigins = [
   'http://localhost:3000',
+  'http://localhost:1234',
   'https://cinedatadb.netlify.app',
   'http://localhost:4200',
   'https://cinedata-movie-api.onrender.com',
@@ -79,10 +81,8 @@ app.use(express.static('public'));
  * @returns {Object} - Sends a string response "Welcome to my movie page!".
  */
 app.get('/', (req, res) => {
-  let responseText = 'Hey there! I love movies.';
-  res.send(responseText);
+  return res.status(200).json({ message: 'Hey there! I love movies.' });
 });
-
 
 /**
  * READ movie list
@@ -95,14 +95,12 @@ app.get('/', (req, res) => {
  * @returns {Object} - Returns JSON response containing all movies.
  */
 app.get('/movies', passport.authenticate('jwt', { session: false }), async (req, res) => {
-  await Movies.find()
-    .then((movies) => {
-      res.status(201).json(movies);
-    })
-    .catch((err) => {
-      console.error(err);
-      res.status(500).send('Error: ' + err);
-    });
+  try {
+    const movies = await Movies.find();
+    return res.status(200).json(movies);
+  } catch (error) {
+    return res.status(500).send(error.message);
+  }
 });
 
 /**
@@ -117,14 +115,15 @@ app.get('/movies', passport.authenticate('jwt', { session: false }), async (req,
  * @returns {Object} - Returns JSON response containing the requested movie.
  */
 app.get('/movies/:movieTitle', passport.authenticate('jwt', { session: false }), async (req, res) => {
-  await Movies.findOne({ title: req.params.movieTitle })
-    .then((movie) => {
-      res.json(movie);
-    })
-    .catch((err) => {
-      console.error(err);
-      res.status(500).send('Error: ' + err);
-    });
+  try {
+    const movie = await Movies.findOne({ title: req.params.movieTitle });
+    if (!movie) {
+      return res.status(404).send('Movie not found');
+    }
+    return res.status(200).json(movie);
+  } catch (error) {
+    return res.status(500).send(error.message);
+  }
 });
 
 /**
@@ -139,14 +138,12 @@ app.get('/movies/:movieTitle', passport.authenticate('jwt', { session: false }),
  * @returns {Object} - Returns JSON response containing the genre object of the requested movies.
  */
 app.get('/movies/genres/:genreName', passport.authenticate('jwt', { session: false }), async (req, res) => {
-  await Movies.find({ 'genre.name': req.params.genreName })
-    .then((movies) => {
-      res.json(movies);
-    })
-    .catch((err) => {
-      console.error(err);
-      res.status(500).send('Error: ' + err);
-    });
+  try {
+    const genres = await Movies.find({ 'genre.name': req.params.genreName });
+    return res.status(200).json(genres);
+  } catch (error) {
+    return res.status(500).send(error.message);
+  }
 });
 
 /**
@@ -161,14 +158,12 @@ app.get('/movies/genres/:genreName', passport.authenticate('jwt', { session: fal
  * @returns {Object} - Returns JSON response containing the director object of the requested movies.
  */
 app.get('/movies/directors/:dirName', passport.authenticate('jwt', { session: false }), async (req, res) => {
-  await Movies.find({ 'director.name': req.params.dirName })
-    .then((director) => {
-      res.json(director);
-    })
-    .catch((err) => {
-      console.error(err);
-      res.status(500).send('Error: ' + err);
-    });
+  try {
+    const director = await Movies.find({ 'director.name': req.params.dirName });
+    return res.status(200).json(director);
+  } catch (error) {
+    return res.status(500).send(error.message);
+  }
 });
 
 /**
@@ -204,19 +199,16 @@ app.get('/users', async (req, res) => {
  * @returns {Object} - Returns JSON response containing the user with this username.
  */
 app.get('/users/:userName', passport.authenticate('jwt', { session: false }), async (req, res) => {
-  // CONDITION TO CHECK ADDED HERE
   if (req.user.username !== req.params.userName) {
     return res.status(400).send('Permission denied');
   }
-  // CONDITION ENDS
-  await Users.findOne({ username: req.params.userName })
-    .then((user) => {
-      res.json(user);
-    })
-    .catch((err) => {
-      console.error(err);
-      res.status(500).send('Error: ' + err);
-    });
+
+  try {
+    const user = await Users.findOne({ username: req.params.userName });
+    return res.status(200).json(user);
+  } catch (error) {
+    return res.status(500).send(error.message);
+  }
 });
 
 // *** POST requests ***
@@ -245,36 +237,29 @@ app.post(
     check('email', 'Email does not appear to be valid').isEmail(),
   ],
   async (req, res) => {
-    // check the validation object for errors
-    let errors = validationResult(req);
-
+    const errors = validationResult(req);
     if (!errors.isEmpty()) {
       return res.status(422).json({ errors: errors.array() });
     }
 
-    let hashedPassword = Users.hashPassword(req.body.password);
-    await Users.findOne({ username: req.body.username })
-      .then((user) => {
-        if (user) {
-          return res.status(400).send(req.body.username + ' already exists');
-        } else {
-          Users.create({
-            username: req.body.username,
-            password: hashedPassword,
-            email: req.body.email,
-            birthdate: req.body.birthdate,
-          })
-            .then((user) => res.status(201).json(user))
-            .catch((error) => {
-              console.error(error);
-              res.status(500).send('Error: ' + error);
-            });
-        }
-      })
-      .catch((error) => {
-        console.error(error);
-        res.status(500).send('Error: ' + error);
+    const existingUsernameUser = await Users.findOne({ username: req.body.username });
+    if (existingUsernameUser) {
+      return res.status(409).send('Username already exists');
+    }
+
+    const hashedPassword = await bcrypt.hash(req.body.password, 10);
+
+    try {
+      const user = await Users.create({
+        username: req.body.username,
+        password: hashedPassword,
+        email: req.body.email,
+        birthdate: req.body.birthdate,
       });
+      return res.status(201).json(user);
+    } catch (error) {
+      return res.status(500).send(error.message);
+    }
   }
 );
 
@@ -303,59 +288,45 @@ app.put(
     check('email', 'Email does not appear to be valid').isEmail(),
   ],
   async (req, res) => {
-    let errors = validationResult(req);
+    const errors = validationResult(req);
     if (!errors.isEmpty()) {
       return res.status(422).json({ errors: errors.array() });
     }
-    await Users.findOne({
+
+    const existingUsername = await Users.findOne({
       username: req.body.username,
       _id: { $ne: req.user._id },
-    })
-      .then((existingUsernameUser) => {
-        if (existingUsernameUser) {
-          return res.status(409).send(req.body.username + ' already exists, please choose another username.');
-        } else {
-          Users.findOne({
+    });
+    if (existingUsername) {
+      return res.status(409).send('Username already exists');
+    }
+
+    const existingEmail = await Users.findOne({
+      email: req.body.email,
+      _id: { $ne: req.user._id },
+    });
+
+    if (existingEmail) {
+      return res.status(409).send('Email already exists');
+    }
+
+    try {
+      const updatedUser = await Users.findOneAndUpdate(
+        { username: req.params.Username },
+        {
+          $set: {
+            username: req.body.username,
+            password: hashedPassword,
             email: req.body.email,
-            _id: { $ne: req.user._id },
-          })
-            .then((existingEmailUser) => {
-              if (existingEmailUser) {
-                const errorMessage = req.body.email + ' already exists, please choose another email.';
-                return res.status(409).send(errorMessage);
-              } else {
-                let hashedPassword = Users.hashPassword(req.body.password);
-                Users.findOneAndUpdate(
-                  { username: req.params.Username },
-                  {
-                    $set: {
-                      username: req.body.username,
-                      password: hashedPassword,
-                      email: req.body.email,
-                      birthdate: req.body.birthdate,
-                    },
-                  },
-                  { new: true }
-                )
-                  .then((updatedUser) => {
-                    res.json(updatedUser);
-                  })
-                  .catch((err) => {
-                    console.error(err);
-                    res.status(500).send('Error: ' + err);
-                  });
-              }
-            })
-            .catch((err) => {
-              console.error(err);
-              res.status(500).send('Error: ' + err);
-            });
-        }
-      })
-      .catch((err) => {
-        console.error(err);
-        res.status(500).send('Error: ' + err);
-      });
+            birthdate: req.body.birthdate,
+          },
+        },
+        { new: true }
+      );
+      return res.status(200).json(updatedUser);
+    } catch (error) {
+      return res.status(500).send(error.message);
+    }
   }
 );
 
@@ -378,20 +349,16 @@ app.put('/users/:userName/favorites/:movieID', passport.authenticate('jwt', { se
     return res.status(400).send('Permission denied');
   }
   // CONDITION ENDS
-  await Users.findOneAndUpdate(
-    { username: req.params.userName },
-    {
-      $push: { favoriteMovies: req.params.movieID },
-    },
-    { new: true }
-  ) // This line makes sure that the updated document is returned
-    .then((updatedUser) => {
-      res.json(updatedUser);
-    })
-    .catch((err) => {
-      console.error(err);
-      res.status(500).send('Error: ' + err);
-    });
+  try {
+    const updatedUser = await Users.findOneAndUpdate(
+      { username: req.params.userName },
+      { $push: { favoriteMovies: req.params.movieID } },
+      { new: true }
+    );
+    return res.status(200).json(updatedUser);
+  } catch (error) {
+    return res.status(500).send(error.message);
+  }
 });
 
 // *** DELETE requests ***
@@ -418,20 +385,16 @@ app.delete(
       return res.status(400).send('Permission denied');
     }
     // CONDITION ENDS
-    await Users.findOneAndUpdate(
-      { username: req.params.userName },
-      {
-        $pull: { favoriteMovies: req.params.movieID },
-      },
-      { new: true }
-    ) // This line makes sure that the updated document is returned
-      .then((updatedUser) => {
-        res.json(updatedUser);
-      })
-      .catch((err) => {
-        console.error(err);
-        res.status(500).send('Error: ' + err);
-      });
+    try {
+      const updatedUser = await Users.findOneAndUpdate(
+        { username: req.params.userName },
+        { $pull: { favoriteMovies: req.params.movieID } },
+        { new: true }
+      );
+      return res.status(200).json(updatedUser);
+    } catch (error) {
+      return res.status(500).send(error.message);
+    }
   }
 );
 
@@ -448,20 +411,16 @@ app.delete(
  * @returns {Object} - Returns message indicating whether the user was successfully deleted or not.
  */
 app.delete('/users/:userName', passport.authenticate('jwt', { session: false }), async (req, res) => {
-  await Users.findOneAndDelete({ username: req.params.userName })
-    .then((user) => {
-      if (!user) {
-        //first check to see if the user account exists
-        res.status(400).send(req.params.userName + ' was not found');
-      } else {
-        //if the user account exists, delete it
-        res.status(200).send(req.params.userName + ' was deleted.');
-      }
-    })
-    .catch((err) => {
-      console.error(err);
-      res.status(500).send('Error: ' + err);
-    });
+  if (req.user.username !== req.params.userName) {
+    return res.status(400).send('Permission denied');
+  }
+
+  try {
+    await Users.findOneAndDelete({ username: req.params.userName });
+    return res.status(204).send('User deleted');
+  } catch (error) {
+    return res.status(500).send(error.message);
+  }
 });
 
 // END OF REQUESTS
