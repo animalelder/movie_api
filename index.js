@@ -237,28 +237,32 @@ app.post(
     check('email', 'Email does not appear to be valid').isEmail(),
   ],
   async (req, res) => {
-    const errors = validationResult(req);
-    if (!errors.isEmpty()) {
-      return res.status(422).json({ errors: errors.array() });
-    }
-
-    const existingUsernameUser = await Users.findOne({ username: req.body.username });
-    if (existingUsernameUser) {
-      return res.status(409).send('Username already exists');
-    }
-
-    const hashedPassword = await bcrypt.hash(req.body.password, 10);
-
     try {
-      const user = await Users.create({
+      const errors = validationResult(req);
+      if (!errors.isEmpty()) {
+        return res.status(422).json({ errors: errors.array() });
+      }
+
+      const existingUsername = await Users.findOne({ username: req.body.username });
+      if (existingUsername) {
+        return res.status(409).send('Username already exists');
+      }
+
+      const hashedPassword = await bcrypt.hash(req.body.password, 10);
+
+      await Users.create({
         username: req.body.username,
         password: hashedPassword,
         email: req.body.email,
         birthdate: req.body.birthdate,
-      });
-      return res.status(201).json(user);
+      })
+        .then((user) => res.status(201).json(user))
+        .catch((error) => {
+          console.error(error);
+          res.status(500).send('Error: ' + error);
+        });
     } catch (error) {
-      return res.status(500).send(error.message);
+      return res.send(error.message);
     }
   }
 );
